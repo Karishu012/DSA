@@ -1,0 +1,144 @@
+1.Pronic Number
+Explanation
+Product of two consecutive integers.
+import java.util.Scanner;
+public class PronicNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        boolean flag = false;
+        for (int i = 0; i <= n; i++) {
+            if (i * (i + 1) == n) {
+                flag = true;
+                break;
+            }
+        }
+        System.out.println(flag ? "Pronic Number" : "Not Pronic Number");
+    }
+}
+-------------------------------------------------------------------------------
+2.unique number no digits repeated print all unique 3 digit numbers (100-999)
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        for (int n = 100; n <= 999; n++) {
+            int a = n / 100;        // hundreds digit
+            int b = (n / 10) % 10;  // tens digit
+            int c = n % 10;         // units digit
+            if (a != b && b != c && a != c) {
+                System.out.print(n + " ");
+            }
+        }
+    }
+}
+-----------------------------------------------------------------------------
+3.Nelson number(111) :check if n is 111 or a multiple pattern. Generate:find all repunit numbers up to n 
+import java.util.*;
+class Main {
+    // Check if a number contains only digit 1
+    public static boolean isNelson(int n) {
+        if (n <= 0) return false;
+        while (n > 0) {
+            if (n % 10 != 1) {
+                return false;
+            }
+            n /= 10;
+        }
+        return true;
+    }
+    // Print all repunit numbers up to n
+    public static void printRepunits(int n) {
+        int repunit = 1;
+        while (repunit <= n) {
+            System.out.println(repunit + " ");
+            repunit = repunit * 10 + 1;
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (isNelson(n))
+            System.out.println(n + " is a Nelson Number");
+        else
+            System.out.println(n + " is not a Nelson Number");
+        System.out.println("Repunit numbers up to " + n + ":");
+        printRepunits(n);
+    }
+}
+--------------------------------------------------------------------------------
+4.Peterson Number
+import java.util.*;
+class Main {
+    public static int factorial(int n) {
+        int fact = 1;
+        for (int i = 2; i <= n; i++) {
+            fact *= i;
+        }
+        return fact;
+    }
+    public static boolean isPeterson(int n) {
+        int temp = n;
+        int sum = 0;
+        while (temp > 0) {
+            int digit = temp % 10;
+            sum += factorial(digit);
+            temp /= 10;
+        }
+        return sum == n;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (isPeterson(n))
+            System.out.println("Peterson Number");
+        else
+            System.out.println("Not a Peterson Number");
+    }
+}
+---------------------------------------------------------------------
+5.Find all numbers in range [L, R] that are both Perfect Squares and Perfect Numbers
+import java.util.Scanner;
+public class Main {
+    public static boolean isPerfectSquare(int n) {
+        int root = (int) Math.sqrt(n);
+        return root * root == n;
+    }
+    public static boolean isPerfectNumber(int n) {
+        if (n <= 1)
+            return false;
+        int sum = 1;
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                sum += i;
+                if (i != n / i) {
+                    sum += n / i;
+                }
+            }
+        }
+------------------------------------------------------------------------------------
+        return sum == n;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int L = sc.nextInt();
+        int R = sc.nextInt();
+
+        boolean found = false;
+
+        for (int i = L; i <= R; i++) {
+            if (isPerfectSquare(i) && isPerfectNumber(i)) {
+                System.out.print(i + " ");
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No such number found");
+        }
+
+        sc.close();
+    }
+}
