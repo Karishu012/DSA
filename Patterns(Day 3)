@@ -1,0 +1,197 @@
+1.Print a Hallow Diamond of stars
+Hallow diamond pattern
+class Solution {
+    void printPat(int n) {
+        // Upper half
+        for (int i = 1; i <= n; i++) {
+            System.out.print(" ");
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print("  ");
+            }
+            System.out.print("*");
+            if (i > 1) {
+                for (int j = 1; j <= 4 * i - 5; j++) {
+                    System.out.print(" ");
+                }
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        // Lower half
+        for (int i = n - 1; i >= 1; i--) {
+            System.out.print(" ");
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print("  ");
+            }
+            System.out.print("*");
+            if (i > 1) {
+                for (int j = 1; j <= 4 * i - 5; j++) {
+                    System.out.print(" ");
+                }
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+output:3
+     *
+   *   *
+ *       *
+   *   *
+     *
+-----------------------(or)--------------------------------------
+class Solution {
+    void printPat(int n) {
+        int totalRows = 2 * n - 1;
+        for (int i = 1; i <= totalRows; i++) {
+            int spaces = Math.abs(n - i);
+            System.out.print(" "); 
+            System.out.print("  ".repeat(spaces));
+            int level = n - spaces;
+            if (level == 1) {
+                System.out.println("*");
+            } else {
+                int innerSpaces = 4 * level - 5;
+                System.out.print("*");
+                System.out.print(" ".repeat(innerSpaces));
+                System.out.println("*");
+            }
+        }
+    }
+}
+----------------------------------------------------------------------------------
+2.print a number pyramid where each row repeats the row number(row 3->3 3 3)
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=n-i;j++)
+            {
+                System.out.print(" ");
+            }
+            for(int j=1;j<=i;j++)
+            {
+                System.out.print(i+" ");
+            }
+            System.out.println();
+        }
+    }
+}
+output:5
+    1 
+   2 2 
+  3 3 3 
+ 4 4 4 4 
+5 5 5 5 5
+--------------------------------------------------------------------------------
+3.print a butterfly pattern of stars with n rows on top and n rows on bottom
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=i;j++)
+            {
+                System.out.print("*");
+            }
+            for(int j=1;j<=2*(n-i);j++)
+            {
+                System.out.print(" ");
+            }
+            for(int j=1;j<=i;j++)
+            {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        for(int i=n-1;i>=1;i--)
+        {
+            for(int j=1;j<=i;j++)
+            {
+                System.out.print("*");
+            }
+            for(int j=1;j<=2*(n-i);j++)
+            {
+                System.out.print(" ");
+            }
+            for(int j=1;j<=i;j++)
+            {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+output:5
+*        *
+**      **
+***    ***
+****  ****
+**********
+****  ****
+***    ***
+**      **
+*        *
+-------------------------------------------------------------------------------------------
+4.print a star pattern forming the letter x on an nxn grid
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+       for(int i=0;i<n;i++)
+       {
+           for(int j=0;j<n;j++)
+           {
+               if(i==j || i+j==n-1)
+               {
+                   System.out.print("*");
+               }
+               else
+               {
+                   System.out.print(" ");
+               }
+           }
+           System.out.println();
+       }
+    }
+}
+output:5
+*   *
+ * * 
+  *  
+ * * 
+*   *
+------------------------------------------------------------------------------------
+5.print a 90 degree clockwise rotated right angle triangle of ascending numbers
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+       for(int i=n;i>=1;i--)
+       {
+           for(int j=0;j<n-i;j++)
+           {
+               System.out.print("  ");
+           }
+           for(int j=1;j<=i;j++)
+           {
+               System.out.print(j+" ");
+           }
+           System.out.println();
+       }
+    }
+}
+output:5
+1 2 3 4 5 
+  1 2 3 4 
+    1 2 3 
+      1 2 
+        1 
