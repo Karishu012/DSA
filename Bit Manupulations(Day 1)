@@ -1,0 +1,125 @@
+1.find the single non duplicate in an array where every other element appears exactly twice using xor 
+import java.util.*;
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        for(int i = 0; i < n; i++)
+        {
+            arr[i] = sc.nextInt();
+        }
+
+        int xor = 0;
+
+        for(int num : arr)
+        {
+            xor ^= num;
+        }
+
+        System.out.println(xor);
+    }
+}
+output:5
+1 2 3 2 3
+1
+----------------------------------------------------------------------
+2.Find the number of bits that must be flipped to convert A int B
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+       Scanner sc=new Scanner(System.in);
+       int a=sc.nextInt();
+       int b=sc.nextInt();
+       int xor=a^b;
+       int count=0;
+       while(xor>0)
+       {
+           count+=xor%2;
+           xor/=2;
+       }
+       System.out.println(count);
+    }
+}
+---------------------------------------------------------------------
+3.Reverse the Bits of a Given 32-bit Unsigned Integer
+import java.util.*;
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int result = 0;
+
+        for(int i = 0; i < 32; i++)
+        {
+            result <<= 1;          // Make space
+
+            result |= (n & 1);     // Copy last bit
+
+            n >>= 1; //or n>>>=1   // Move to next bit
+        }
+
+        System.out.println(result);
+    }
+}
+-----------------------------------------------------------------
+4.Find missing number in an array using xor 
+import java.util.*;
+class Main {
+    public static int findmissing(int n,int[] arr){
+        int xor1=0,xor2=0;
+        for(int i=0;i<=n;i++)
+        {
+            xor1^=i;
+        }
+        for(int num:arr)
+        {
+            xor2^=num;
+        }
+       return xor1^xor2;
+    }
+    public static void main(String[] args) {
+       Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] a=new int[n];
+        for(int i=0;i<n-1;i++)
+        {
+            a[i]=sc.nextInt();
+        }
+        System.out.println(findmissing(n,a));
+    }
+}
+------------------------------------------------------------------------
+5.Swap all odd-position bits and even-position bits of a 32-bit integer using Bit Manipulation
+import java.util.*;
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int evenBits = n & 0x55555555;
+        int oddBits = n & 0xAAAAAAAA;
+
+        evenBits <<= 1;
+        oddBits >>= 1;
+
+        int result = evenBits | oddBits;
+
+        System.out.println(result);
+    }
+}
+
